@@ -23,7 +23,7 @@ async def create_pool(loop,**kw):
 # 创建事件循环对象
 loop = asyncio.get_event_loop()
 # 定义连接池的参数
-kw = {'user':'www-data','password':'www-data','db':'awesome'}
+kw = {'user':'root','password':'password','db':'awesome'}
 # 创建数据库连接池，执行完毕以后就创建了全局的连接池对象__pool
 # 在执行搜索的select协程函数和执行修改的execute函数需要调用连接池对象创建数据库浮标对象
 loop.run_until_complete(create_pool(loop=loop,**kw))

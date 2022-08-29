@@ -3,7 +3,7 @@ import asyncio
 from models import User, Blog, Comment
 
 async def test(loop):
-    await orm.create_pool(loop=loop, user='root', password='root', db='awesome')
+    await orm.create_pool(loop=loop, user='root', password='password', db='awesome')
     u = User(name='Test', email='test@qq.com', passwd='1234567890', image='about:blank')
     await u.save()
     ## 网友指出添加到数据库后需要关闭连接池，否则会报错 RuntimeError: Event loop is closed
