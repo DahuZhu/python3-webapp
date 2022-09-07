@@ -82,7 +82,7 @@ $(function() {
                 </tr>
             </thead>
             <tbody>
-                <tr v-repeat="comment: comments" >
+                <tr v-for="comment in comments" >
                     <td>
                         <span v-text="comment.user_name"></span>
                     </td>
@@ -93,7 +93,7 @@ $(function() {
                         <span v-text="comment.created_at.toDateTime()"></span>
                     </td>
                     <td>
-                        <a href="#0" v-on="click: delete_comment(comment)">删除</a>
+                        <a href="#0" v-on:click="delete_comment(comment)">删除</a>
                     </td>
                 </tr>
             </tbody>
@@ -101,10 +101,10 @@ $(function() {
         <div class="uk-width-1-1 uk-text-center">
         <ul class="uk-pagination">
             <li v-if="! page.has_previous" class="uk-disabled"><span><i uk-icon="chevron-left"></i></span></li>
-            <li v-if="page.has_previous"><a v-on="click: previous()" href="#0"><i uk-icon="chevron-left"></i></a></li>
+            <li v-if="page.has_previous"><a v-on:click="previous()" href="#0"><i uk-icon="chevron-left"></i></a></li>
             <li class="uk-active"><span v-text="page.page_index"></span></li>
             <li v-if="! page.has_next" class="uk-disabled"><span><i uk-icon="chevron-right"></i></span></li>
-            <li v-if="page.has_next"><a v-on="click: next()" href="#0"><i uk-icon="chevron-right"></i></a></li>
+            <li v-if="page.has_next"><a v-on:click="next()" href="#0"><i uk-icon="chevron-right"></i></a></li>
         </ul>
         </div>
     </div>

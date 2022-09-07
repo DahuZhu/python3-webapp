@@ -82,19 +82,19 @@ $(function() {
                 </tr>
             </thead>
             <tbody>
-                <tr v-repeat="user: users">
+                <tr v-for="user in users">
                     <td>
                         <span v-text="user.name"></span>
                         <span v-if="user.admin" style="color:#d05">管理员</span>
                     </td>
                     <td>
-                        <a v-attr="href: 'mailto:'+user.email" v-text="user.email"></a>
+                        <a v-attr:href="'mailto:'+user.email" v-text="user.email"></a>
                     </td>
                     <td>
                         <span v-text="user.created_at.toDateTime()"></span>
                     </td>
                     <td>
-                        <a href="#0" v-on="click: delete_user(user)">删除</a>
+                        <a href="#0" v-on:click="delete_user(user)">删除</a>
                     </td>
                 </tr>
             </tbody>
@@ -102,10 +102,10 @@ $(function() {
         <div class="uk-width-1-1 uk-text-center">
         <ul class="uk-pagination">
             <li v-if="! page.has_previous" class="uk-disabled"><span><i uk-icon="chevron-left"></i></span></li>
-            <li v-if="page.has_previous"><a v-on="click: previous()" href="#0"><i uk-icon="chevron-left"></i></a></li>
+            <li v-if="page.has_previous"><a v-on:click="previous()" href="#0"><i uk-icon="chevron-left"></i></a></li>
             <li class="uk-active"><span v-text="page.page_index"></span></li>
             <li v-if="! page.has_next" class="uk-disabled"><span><i uk-icon="chevron-right"></i></span></li>
-            <li v-if="page.has_next"><a v-on="click: next()" href="#0"><i uk-icon="chevron-right"></i></a></li>
+            <li v-if="page.has_next"><a v-on:click="next()" href="#0"><i uk-icon="chevron-right"></i></a></li>
         </ul>
         </div>
     </div>
