@@ -259,7 +259,7 @@ async def api_register_user(*, email, name, passwd):
         raise APIError('register:failed', 'email', 'Email is already in use.')
     uid = next_id()
     sha1_passwd = '%s:%s' % (uid, passwd)
-    user = User(id=uid, name=name.strip(), email=email, passwd=hashlib.sha1(sha1_passwd.encode('utf-8')).hexdigest(), image='http://www.gravatar.com/avatar/%s?d=mm&s=120' % hashlib.md5(email.encode('utf-8')).hexdigest())
+    user = User(id=uid, name=name.strip(), email=email, passwd=hashlib.sha1(sha1_passwd.encode('utf-8')).hexdigest(), image='http://www.gravatar.com/avatar/%s?d=robohash&s=120' % hashlib.md5(email.encode('utf-8')).hexdigest())
     await user.save()
     # make session cookie:
     r = web.Response()
@@ -340,7 +340,7 @@ async def api_delete_users(id, request):
         for comment in comments:
             id = comment.id
             c = await Comment.find(id)
-            c.user_name = c.user_name + ' (该用户已被删除)'
+            c.user_name = c.user_name + '(user was deleted)'
             await c.update()
     id = id_buff
     return dict(id=id)

@@ -46,11 +46,37 @@ $(function () {
     <!--日志评论区-->
     {% if __user__ %}
         <h3>Comments</h3>
-
+        <!--
         <article class="uk-comment">
             <header class="uk-comment-header">
                 <img class="uk-comment-avatar uk-border-circle" width="50" height="50" src="{{ __user__.image }}">
                 <h4 class="uk-comment-title">{{ __user__.name }}</h4>
+            </header>
+            <div class="uk-comment-body">
+                <form id="form-comment" class="uk-form">
+                    <fieldset class="uk-fieldset">
+                        <div class="uk-alert uk-alert-danger uk-hidden"></div>
+                        <div class="uk-margin">
+                            <textarea class="uk-textarea" rows="6" placeholder="Say something."></textarea>
+                        </div>
+                        <div class="uk-margin">
+                            <button type="submit" class="uk-button uk-button-primary"> Submit comment</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </article>
+        -->
+        <article class="uk-comment">
+            <header class="uk-comment-header">
+                <div class="uk-grid-medium uk-flex-middle" uk-grid>
+                    <div class="uk-width-auto">
+                        <img class="uk-comment-avatar uk-border-circle" width="80" height="80" src="{{ __user__.image }}">
+                    </div>
+                    <div class="uk-width-expand">
+                        <h4 class="uk-comment-title">{{ __user__.name }}</h4>
+                    </div>
+                </div>
             </header>
             <div class="uk-comment-body">
                 <form id="form-comment" class="uk-form">
@@ -75,11 +101,29 @@ $(function () {
         <ul class="uk-comment-list">
             {% for comment in comments %}
             <li>
+                <!--
                 <article class="uk-comment">
                     <header class="uk-comment-header">
                         <img class="uk-comment-avatar uk-border-circle" width="50" height="50" src="{{ comment.user_image }}">
-                        <h4 class="uk-comment-title">{{ comment.user_name }} {% if comment.user_id==blog.user_id %}(Author){% endif %}</h4>
+                        <h4 class="uk-comment-title">{{ comment.user_name }} {% if comment.user_id==blog.user_id %}(author){% endif %}</h4>
                         <p class="uk-comment-meta">{{ comment.created_at|datetime }}</p>
+                    </header>
+                    <div class="uk-comment-body">
+                        {{ comment.html_content|safe }}
+                    </div>
+                </article>
+                -->
+                <article class="uk-comment uk-comment-primary">
+                    <header class="uk-comment-header">
+                        <div class="uk-grid-medium uk-flex-middle" uk-grid>
+                            <div class="uk-width-auto">
+                                <img class="uk-comment-avatar uk-border-circle uk-box-shadow-small" width="80" height="80" src="{{ comment.user_image }}">
+                            </div>
+                            <div class="uk-width-expand">
+                                <h4 class="uk-comment-title">{{ comment.user_name }} {% if comment.user_id==blog.user_id %}(author){% endif %}</h4>
+                                <p class="uk-comment-meta">{{ comment.created_at|datetime }}
+                            </div>
+                        </div>
                     </header>
                     <div class="uk-comment-body">
                         {{ comment.html_content|safe }}
@@ -94,12 +138,12 @@ $(function () {
     </div>
 
     <div class="uk-width-1-4 uk-visible@m">
-        <div class="uk-card uk-card-default">
+        <div class="uk-card uk-card-default uk-card-small uk-card-hover">
             <div class="uk-card-body">
-            <div class="uk-text-center">
-                <img class="uk-border-circle" width="120" height="120" src="{{ blog.user_image }}">
-                <h4>{{ blog.user_name }}</h4>
-            </div>
+                <div class="uk-text-center">
+                    <img class="uk-border-circle" width="150" height="150" src="{{ blog.user_image }}">
+                    <p class="uk-text-large">{{ blog.user_name }}</p>
+                </div>
             </div>
         </div>
     </div>
