@@ -1,7 +1,7 @@
 <!-- 继承父模板 '__base__.html' -->
 {% extends '__base__.html' %}
 <!--jinja2 title 块内容替换-->
-{% block title %}用户{% endblock %}
+{% block title %}Users{% endblock %}
 <!--jinja2 beforehead 块内容替换-->
 {% block beforehead %}
 <!--script中构建vue,向后端API提交用户管理操作相关数据-->
@@ -24,7 +24,7 @@ function initVM(data) {
                 gotoPage(this.page.page_index + 1);
             },
             delete_user: function (user) {
-                if (confirm('确认要删除用户“' + user.name + '”？删除后不可恢复！')) {
+                if (confirm('Do you want to delete ' + user.name + '”？Can not be restored！')) {
                     postJSON('/api/users/' + user.id + '/delete', function (err, r) {
                         if (err) {
                             return error(err);
@@ -58,9 +58,9 @@ $(function() {
     <div class="uk-grid">
     <div class="uk-width-1-1 uk-margin-bottom">
         <ul class="uk-breadcrumb">
-            <li><a href="/manage/comments">评论</a></li>
-            <li><a href="/manage/blogs">日志</a></li>
-            <li class="uk-active"><span>用户</span></li>
+            <li><a href="/manage/comments">Comments</a></li>
+            <li><a href="/manage/blogs">Articles</a></li>
+            <li class="uk-active"><span>Users</span></li>
         </ul>
     </div>
 
@@ -68,33 +68,33 @@ $(function() {
     </div>
 
     <div id="loading" class="uk-width-1-1 uk-text-center">
-        <span><i class="uk-icon-spinner uk-icon-medium uk-icon-spin"></i> 正在加载...</span>
+        <span><i class="uk-icon-spinner uk-icon-medium uk-icon-spin"></i> Loading...</span>
     </div>
 
     <div id="vm" class="uk-width-1-1">
         <table class="uk-table uk-table-divider">
             <thead>
                 <tr>
-                    <th class="uk-table-expand uk-text-left">名字</th>
-                    <th class="uk-text-left">电子邮件</th>
-                    <th class="uk-text-left">注册时间</th>
-                    <th class="uk-text-left">操作</th>
+                    <th class="uk-table-expand uk-text-left">Name</th>
+                    <th class="uk-text-left">Email</th>
+                    <th class="uk-text-left">Created</th>
+                    <th class="uk-text-left">Action</th>
                 </tr>
             </thead>
             <tbody>
                 <tr v-for="user in users">
                     <td>
                         <span v-text="user.name"></span>
-                        <span v-if="user.admin" style="color:#d05">管理员</span>
+                        <span v-if="user.admin" style="color:#d05">(admin)</span>
                     </td>
                     <td>
-                        <a v-attr:href="'mailto:'+user.email" v-text="user.email"></a>
+                        <a v-bind:href="`mailto:${user.email}`" v-text="user.email"></a>
                     </td>
                     <td>
                         <span v-text="user.created_at.toDateTime()"></span>
                     </td>
                     <td>
-                        <a href="#0" v-on:click="delete_user(user)">删除</a>
+                        <a href="#0" v-on:click="delete_user(user)">Delete</a>
                     </td>
                 </tr>
             </tbody>

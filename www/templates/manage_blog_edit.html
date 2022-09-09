@@ -1,7 +1,7 @@
 <!-- 继承父模板 '__base__.html' -->
 {% extends '__base__.html' %}
 <!--jinja2 title 块内容替换-->
-{% block title %}编辑日志{% endblock %}
+{% block title %}EditArticle{% endblock %}
 <!--jinja2 beforehead 块内容替换-->
 {% block beforehead %}
 <!--script中构建vue,向后端API提交日志相关数据,包括创建新日志和修改旧日志-->
@@ -62,9 +62,9 @@ $(function () {
     <div class="uk-grid">
     <div class="uk-width-1-1 uk-margin-bottom">
         <ul class="uk-breadcrumb">
-            <li><a href="/manage/comments">评论</a></li>
-            <li><a href="/manage/blogs">日志</a></li>
-            <li><a href="/manage/users">用户</a></li>
+            <li><a href="/manage/comments">Comments</a></li>
+            <li><a href="/manage/blogs">Articles</a></li>
+            <li><a href="/manage/users">Users</a></li>
         </ul>
     </div>
 
@@ -72,33 +72,33 @@ $(function () {
     </div>
 
     <div id="loading" class="uk-width-1-1 uk-text-center">
-        <span><i class="uk-icon-spinner uk-icon-medium uk-icon-spin"></i> 正在加载...</span>
+        <span><i class="uk-icon-spinner uk-icon-medium uk-icon-spin"></i> Loading...</span>
     </div>
 
     <div id="vm" class="uk-width-2-3">
         <form v-on:submit="submit" class="uk-form-stacked">
             <div class="uk-alert uk-alert-danger uk-hidden"></div>
             <div class="uk-margin-top">
-                <label class="uk-form-label">标题:</label>
+                <label class="uk-form-label">Title:</label>
                 <div class="uk-form-controls">
-                    <input v-model="name" name="name" type="text" placeholder="标题" class="uk-input uk-form-width-large">
+                    <input v-model="name" name="name" type="text" placeholder="title" class="uk-input uk-form-width-large">
                 </div>
             </div>
             <div class="uk-margin-top">
-                <label class="uk-form-label">摘要:</label>
+                <label class="uk-form-label">Summary:</label>
                 <div class="uk-form-controls">
-                    <textarea v-model="summary" rows="4" name="summary" placeholder="摘要" class="uk-textarea" style="resize:none;"></textarea>
+                    <textarea v-model="summary" rows="4" name="summary" placeholder="Subject/summary" class="uk-textarea" style="resize:none;"></textarea>
                 </div>
             </div>
             <div class="uk-margin-top">
-                <label class="uk-form-label">内容:</label>
+                <label class="uk-form-label">Content:</label>
                 <div class="uk-form-controls">
-                    <textarea v-model="content" rows="12" name="content" placeholder="内容" class="uk-textarea" style="resize:none;"></textarea>
+                    <textarea v-model="content" rows="12" name="content" placeholder="content" class="uk-textarea" style="resize:none;"></textarea>
                 </div>
             </div>
             <div class="uk-margin-top">
-                <button type="submit" class="uk-button uk-button-primary"><i class="uk-icon-save"></i> 保存</button>
-                <a href="/manage/blogs" class="uk-button"><i class="uk-icon-times"></i> 取消</a>
+                <button type="submit" class="uk-button uk-button-primary"><i class="uk-icon-save"></i> Save</button>
+                <a href="/manage/blogs" class="uk-button"><i class="uk-icon-times"></i> Cancle</a>
             </div>
         </form>
     </div>

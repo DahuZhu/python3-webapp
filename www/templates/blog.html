@@ -16,7 +16,7 @@ $(function () {
         $form.showFormError('');
         var content = $form.find('textarea').val().trim();
         if (content==='') {
-            return $form.showFormError('请输入评论内容！');
+            return $form.showFormError('Please leave your comment before submitting！');
         }
         $form.postJSON(comment_url, { content: content }, function (err, result) {
             if (err) {
@@ -37,7 +37,7 @@ $(function () {
         <!--日志内容详情-->
         <article class="uk-article">
             <h2>{{ blog.name }}</h2>
-            <p class="uk-article-meta">发表于{{ blog.created_at|datetime }}</p>
+            <p class="uk-article-meta">Posted {{ blog.created_at|datetime }}</p>
             <p>{{ blog.html_content|safe }}</p>
         </article>
 
@@ -45,7 +45,7 @@ $(function () {
 
     <!--日志评论区-->
     {% if __user__ %}
-        <h3>发表评论</h3>
+        <h3>Comments</h3>
 
         <article class="uk-comment">
             <header class="uk-comment-header">
@@ -57,10 +57,10 @@ $(function () {
                     <fieldset class="uk-fieldset">
                         <div class="uk-alert uk-alert-danger uk-hidden"></div>
                         <div class="uk-margin">
-                            <textarea class="uk-textarea" rows="6" placeholder="说点什么吧"></textarea>
+                            <textarea class="uk-textarea" rows="6" placeholder="Say something."></textarea>
                         </div>
                         <div class="uk-margin">
-                            <button type="submit" class="uk-button uk-button-primary"> 发表评论</button>
+                            <button type="submit" class="uk-button uk-button-primary"> Submit comment</button>
                         </div>
                     </fieldset>
                 </form>
@@ -70,7 +70,7 @@ $(function () {
         <hr>
     {% endif %}
 
-        <h3>最新评论</h3>
+        <h3>Latest comments</h3>
 
         <ul class="uk-comment-list">
             {% for comment in comments %}
@@ -78,7 +78,7 @@ $(function () {
                 <article class="uk-comment">
                     <header class="uk-comment-header">
                         <img class="uk-comment-avatar uk-border-circle" width="50" height="50" src="{{ comment.user_image }}">
-                        <h4 class="uk-comment-title">{{ comment.user_name }} {% if comment.user_id==blog.user_id %}(作者){% endif %}</h4>
+                        <h4 class="uk-comment-title">{{ comment.user_name }} {% if comment.user_id==blog.user_id %}(Author){% endif %}</h4>
                         <p class="uk-comment-meta">{{ comment.created_at|datetime }}</p>
                     </header>
                     <div class="uk-comment-body">
@@ -87,7 +87,7 @@ $(function () {
                 </article>
             </li>
             {% else %}
-            <p>还没有人评论...</p>
+            <p>Still waiting for a comment...</p>
             {% endfor %}
         </ul>
 
@@ -108,14 +108,14 @@ $(function () {
     <div class="uk-hidden@m">
         <article class="uk-article">
             <h3>{{ blog.name }}</h3>
-            <p class="uk-article-meta">{{ blog.user_name }} 发表于{{ blog.created_at|datetime }}</p>
+            <p class="uk-article-meta">{{ blog.user_name }} Post{{ blog.created_at|datetime }}</p>
             <p>{{ blog.html_content|safe }}</p>
         </article>
 
         <hr>
 
     {% if __user__ %}
-        <h4>发表评论</h4>
+        <h4>Comments</h4>
 
         <article class="uk-comment">
             <header class="uk-comment-header">
@@ -127,10 +127,10 @@ $(function () {
                     <fieldset class="uk-fieldset">
                         <div class="uk-alert uk-alert-danger uk-hidden"></div>
                         <div class="uk-margin">
-                            <textarea class="uk-textarea" rows="6" placeholder="说点什么吧"></textarea>
+                            <textarea class="uk-textarea" rows="6" placeholder="Say something."></textarea>
                         </div>
                         <div class="uk-margin">
-                            <button type="submit" class="uk-button uk-button-primary"> 发表评论</button>
+                            <button type="submit" class="uk-button uk-button-primary"> Submit comment</button>
                         </div>
                     </fieldset>
                 </form>
@@ -140,7 +140,7 @@ $(function () {
         <hr>
     {% endif %}
 
-        <h4>最新评论</h4>
+        <h4>Latest comment</h4>
 
         <ul class="uk-comment-list">
             {% for comment in comments %}
@@ -148,7 +148,7 @@ $(function () {
                 <article class="uk-comment">
                     <header class="uk-comment-header">
                         <img class="uk-comment-avatar uk-border-circle" width="50" height="50" src="{{ comment.user_image }}">
-                        <h5 class="uk-comment-title">{{ comment.user_name }} {% if comment.user_id==blog.user_id %}(作者){% endif %}</h5>
+                        <h5 class="uk-comment-title">{{ comment.user_name }} {% if comment.user_id==blog.user_id %}(Author){% endif %}</h5>
                         <p class="uk-comment-meta">{{ comment.created_at|datetime }}</p>
                     </header>
                     <div class="uk-comment-body">
@@ -157,7 +157,7 @@ $(function () {
                 </article>
             </li>
             {% else %}
-            <p>还没有人评论...</p>
+            <p>Still waiting for a comment...</p>
             {% endfor %}
         </ul>
 

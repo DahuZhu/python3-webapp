@@ -16,9 +16,9 @@
     {% for blog in blogs %}
         <article class="uk-article">
             <h3><a href="/blog/{{ blog.id }}">{{ blog.name }}</a></h3>
-            <p class="uk-article-meta">发表于{{ blog.created_at|datetime }}</p>
+            <p class="uk-article-meta">Post{{ blog.created_at|datetime }}</p>
             <p>{{ blog.summary }}</p>
-            <p><a href="/blog/{{ blog.id }}">继续阅读 <i class="uk-icon-angle-double-right"></i></a></p>
+            <p><a href="/blog/{{ blog.id }}">Continue <i class="uk-icon-angle-double-right"></i></a></p>
         </article>
         <hr>
     {% endfor %}
@@ -59,9 +59,9 @@
     {% for blog in blogs %}
         <article class="uk-article">
             <h5><a href="/blog/{{ blog.id }}">{{ blog.name }}</a></h5>
-            <p class="uk-article-meta">发表于{{ blog.created_at|datetime }}</p>
+            <p class="uk-article-meta">Post{{ blog.created_at|datetime }}</p>
             <p>{{ blog.summary }}</p>
-            <p><a href="/blog/{{ blog.id }}">继续阅读 <i class="uk-icon-angle-double-right"></i></a></p>
+            <p><a href="/blog/{{ blog.id }}">Continue <i class="uk-icon-angle-double-right"></i></a></p>
         </article>
         <hr>
     {% endfor %}
