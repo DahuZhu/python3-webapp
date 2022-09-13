@@ -50,8 +50,8 @@
     <div class="uk-margin uk-visible@m" style="background-color:rgba(100,150,185,0);">
     <div class="uk-container uk-container-medium">
     <!--导航栏UI-->
-    <nav class="uk-navbar-container" uk-navbar style="background-color:rgba(255,255,255,0);">
-        <div class="uk-navbar-left uk-margin-medium-top uk-margin-medium-bottom">
+    <nav class="uk-navbar-container uk-margin-top" uk-navbar style="background-color:rgba(255,255,255,0);">
+        <div class="uk-navbar-left">
             <a class="uk-navbar-item uk-logo" href="/">
                 <!--此处uk-icon为图标,读者可以选UIkit自带icon,也可以添加自定义icon重新打包uk-icon.js,详见官网Documentation-->
                 <span class="uk-icon uk-margin-small-right" uk-icon="world" ratio="3"></span>
@@ -62,12 +62,12 @@
                 <li><a href="#"> Resume </a></li>
             </ul>
         </div>
-        <div class="uk-navbar-right uk-margin-medium-top uk-margin-medium-bottom">
+        <div class="uk-navbar-right ">
             <ul class="uk-navbar-nav">
             {% if __user__ %}
                 <li>
                     <a href="#0"> {{ __user__.name }}</a>
-                    <div class="uk-navbar-dropdown">
+                    <div class="uk-navbar-dropdown" style="">
                         <ul class="uk-nav uk-navbar-dropdown-nav">
                             <li><a href="/manage/"> Manage</a></li>
                             <li><a href="/signout"> Logout</a></li>
@@ -85,7 +85,7 @@
     </div>
 
     <!--uk-hidden@m是小于中等尺寸屏幕时显示的UI-->
-    <nav class="uk-navbar-container uk-margin-medium uk-hidden@m" uk-navbar style="background-color:rgba(255,255,255,0);">
+    <nav class="uk-navbar-container uk-margin-bottom uk-hidden@m uk-navbar uk-sticky uk-active uk-sticky-below uk-sticky-fixed" uk-navbar style="background-color:rgba(255,255,255,1); " uk-sticky="position:top;">
         <div class="uk-navbar-left">
             <a class="uk-navbar-item uk-logo uk-margin-left" href="/">
                 <span class="uk-icon uk-margin-small-right" uk-icon="world" ratio="3"></span>

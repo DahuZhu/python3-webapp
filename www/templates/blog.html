@@ -28,32 +28,32 @@ $(function () {
 });
 </script>
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+
 
 {% endblock %}
 
 <!--jinja2 content 块内容替换-->
 {% block content %}
-    <div class="uk-grid  uk-visible@m">
-        <div class="uk-width-3-4">
+    <div class="uk-grid">
+        <div class="uk-width-expand">
             <!--日志内容详情-->
             <article class="uk-article">
                 <h2>{{ blog.name }}</h2>
-                <p class="uk-article-meta">Posted {{ blog.created_at|datetime }}</p>
-                <span id="busuanzi_container_page_pv" class="">Views <span id="busuanzi_value_page_pv"></span></span>
+                <p class="uk-article-meta">Posted {{ blog.created_at|datetime }} <span id="busuanzi_container_page_pv" class="uk-margin-small-left" style="display: inline;">Views <span id="busuanzi_value_page_pv"></span></span></p>
                 <p>{{ blog.html_content|safe }}</p>
             </article>
 
             <hr>
 
             <div id="dz-comments"></div>
+            <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
             <script>
                 new Valine({
                     el: '#dz-comments',
                     appId: 'hbPEZTkMts7GIVYG6Xp043fJ-MdYXbMMI',
                     appKey: '0gm1wxsLAKyA48LXQSR3CnDR',
                     serverURLs: 'https://hbPEZTkM.api.lncldglobal.com',
-                    placeholder: 'Shot your comment!',
+                    placeholder: 'Leave a comment!',
                     meta: ['nick','mail'],
                     avatar:'retro',
                     lang: 'en' 
@@ -134,14 +134,33 @@ $(function () {
         </div>
     </div>
 
+    <!--
     <div class="uk-hidden@m">
+    
         <article class="uk-article">
             <h3>{{ blog.name }}</h3>
             <p class="uk-article-meta">{{ blog.user_name }} Post{{ blog.created_at|datetime }}</p>
             <p>{{ blog.html_content|safe }}</p>
         </article>
-        <div id="dz-comments"></div>
         <hr>
+    -->  
+        <!--
+        <div id="dz-comments"></div>
+        <script>
+            new Valine({
+                el: '#dz-comments',
+                appId: 'hbPEZTkMts7GIVYG6Xp043fJ-MdYXbMMI',
+                appKey: '0gm1wxsLAKyA48LXQSR3CnDR',
+                serverURLs: 'https://hbPEZTkM.api.lncldglobal.com',
+                placeholder: 'Leave a comment!',
+                meta: ['nick','mail'],
+                avatar:'retro',
+                lang: 'en' 
+            });
+            
+        </script>    
+        -->
+    
         <!--
         {% if __user__ %}
             <h4>Comments</h4>
@@ -190,6 +209,6 @@ $(function () {
                 {% endfor %}
             </ul>
             -->
-    </div>
+    <!--</div>-->
 
 {% endblock %}
