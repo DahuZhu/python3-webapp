@@ -49,49 +49,49 @@
         <canvas width="3840" height="1933" style="opacity: 0.5; position: fixed; top: 0px; left: 0px; z-index: -1; width: 100%; height: 100%; pointer-events: none;"></canvas>
         <!--"uk-"开头的都是UIkit里的组件，具体请参考UIkit官网的Documents详解-->
         <!--uk-visible@m是大于中等尺寸屏幕时显示的UI-->
-        <div class="uk-margin uk-visible@m" style="background-color:rgba(100,150,185,0);">
-        <div class="uk-container uk-container-medium">
-        <!--导航栏UI-->
-        <nav class="uk-navbar-container uk-margin-top" uk-navbar style="background-color:rgba(255,255,255,0);">
-            <div class="uk-navbar-left">
-                <a class="uk-navbar-item uk-logo" href="/">
-                    <!--此处uk-icon为图标,读者可以选UIkit自带icon,也可以添加自定义icon重新打包uk-icon.js,详见官网Documentation-->
-                    <span class="uk-icon uk-margin-small-right" uk-icon="world" ratio="3"></span>
-                    SPACE 
-                </a>
-                <ul class="uk-navbar-nav">
-                    <li><a href="/"> Article </a></li>
-                    <li><a href="#"> Resume </a></li>
-                </ul>
+        <div class="uk-visible@m" style="background-color:rgba(255,255,255,1);">
+            <div class="uk-container uk-container-medium uk-margin-bottom">
+                <!--导航栏UI-->
+                <nav class="uk-navbar-container" uk-navbar style="background-color:rgba(255,255,255,0);">
+                    <div class="uk-navbar-left">
+                        <a class="uk-navbar-item uk-logo" href="/">
+                            <!--此处uk-icon为图标,读者可以选UIkit自带icon,也可以添加自定义icon重新打包uk-icon.js,详见官网Documentation-->
+                            <span class="uk-icon uk-margin-small-right" uk-icon="pencil" ratio="3"></span>
+                            A directory of wonderful things 
+                        </a>
+                        <ul class="uk-navbar-nav" style="font-weight:bold;">
+                            <li><a href="/"> Article </a></li>
+                            <li><a href="#"> Resume </a></li>
+                        </ul>
+                    </div>
+                    <div class="uk-navbar-right ">
+                        <ul class="uk-navbar-nav">
+                        {% if __user__ %}
+                            <li>
+                                <a href="#0"> {{ __user__.name }}</a>
+                                <div class="uk-navbar-dropdown" style="">
+                                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                                        <li><a href="/manage/"> Manage</a></li>
+                                        <li><a href="/signout"> Logout</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        {% else %}
+                            <li><a href="/signin"> Login</a></li>
+                            <li><a href="/register"> Register</a></li>
+                        {% endif %}
+                        </ul>
+                    </div>
+                </nav>
             </div>
-            <div class="uk-navbar-right ">
-                <ul class="uk-navbar-nav">
-                {% if __user__ %}
-                    <li>
-                        <a href="#0"> {{ __user__.name }}</a>
-                        <div class="uk-navbar-dropdown" style="">
-                            <ul class="uk-nav uk-navbar-dropdown-nav">
-                                <li><a href="/manage/"> Manage</a></li>
-                                <li><a href="/signout"> Logout</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                {% else %}
-                    <li><a href="/signin"> Login</a></li>
-                    <li><a href="/register"> Register</a></li>
-                {% endif %}
-                </ul>
-            </div>
-        </nav>
-        </div>
         </div>
 
         <!--uk-hidden@m是小于中等尺寸屏幕时显示的UI-->
         <nav class="uk-navbar-container uk-margin-bottom uk-hidden@m uk-navbar uk-sticky uk-active uk-sticky-below uk-sticky-fixed" uk-navbar style="background-color:rgba(255,255,255,1); " uk-sticky="position:top;">
             <div class="uk-navbar-left">
                 <a class="uk-navbar-item uk-logo uk-margin-left" href="/">
-                    <span class="uk-icon uk-margin-small-right" uk-icon="world" ratio="3"></span>
-                    SPACE  
+                    <span class="uk-icon uk-margin-small-right" uk-icon="pencil" ratio="3"></span>
+                    A directory of wonderful things   
                 </a>
             </div>
             <div class="uk-navbar-right">
@@ -131,11 +131,13 @@
         <div class="uk-container uk-container-center uk-text-center">
             <p>
                 <a target="_blank" href="https://github.com/DahuZhu" class="uk-icon-button uk-margin-small-right" ratio="1.1" uk-icon="github"></a>
+                <!--
                 <a target="_blank" href="#" class="uk-icon-button uk-margin-small-right" ratio="1.1" uk-icon="instagram"></a>
                 <a target="_blank" href="#" class="uk-icon-button uk-margin-small-right" ratio="1.2" uk-icon="twitter"></a>
+                -->
                 <a target="_blank" href="#" class="uk-icon-button uk-margin-small-right" ratio="1.1" uk-icon="linkedin"></a>
             </p>
-            <p class="uk-text-meta" style="line-height: 10px; padding: 10px 0; margin: 8px 0;">Powered by <a href="#">AwesomeDavidBlog!</a> Copyright &copy; 2022.</p>
+            <p class="uk-text-meta" style="line-height: 10px; padding: 10px 0; margin: 8px 0;">Powered by <a href="#">DzBlog!</a> Copyright &copy; 2022.</p>
             <p class="uk-text-meta" style="line-height: 0px; padding: 0px 0; margin: 0px 0;"><a href="#" target="_blank">Dahu Zhu</a>. All rights reserved.</p>
         </div>
         </div>
